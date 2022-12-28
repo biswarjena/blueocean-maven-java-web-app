@@ -10,7 +10,7 @@ pipeline {
         }
 
         withSonarQubeEnv(installationName: 'SonarQube Server', credentialsId: 'Sonarqube running in VM devops') {
-          sh '/Users/bisu/ProgramFiles/sonar-scanner/bin/sonar-scanner -Dproject.setttings=sonar-project.properties', label: ‘SonarQube Analysis’
+          sh '/Users/bisu/ProgramFiles/sonar-scanner/bin/sonar-scanner -Dproject.setttings=sonar-project.properties'
         }
         
         waitForQualityGate(abortPipeline: true, credentialsId: ‘Sonarqube running in VM devops’, webhookSecretId: ‘Webhook for sonarqube’)
